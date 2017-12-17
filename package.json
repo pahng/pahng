@@ -2,7 +2,6 @@
   "name": "pahng",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "server.js",
   "scripts": {
     "ng": "ng",
     "start": "ng build && node server.js",
