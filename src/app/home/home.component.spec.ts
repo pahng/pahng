@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomeComponent } from './home.component';
+import { MainLayoutComponent } from '../core/main-layout/main-layout.component';
+import { NavbarComponent } from '../core/navbar/navbar.component';
+import { SideMenuComponent } from '../core/side-menu/side-menu.component';
+import { SharedModule } from '../shared/shared.module';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,7 +13,16 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      imports: [
+        SharedModule,
+        RouterTestingModule,
+      ],
+      declarations: [
+        HomeComponent,
+        MainLayoutComponent,
+        NavbarComponent,
+        SideMenuComponent,
+      ]
     })
     .compileComponents();
   }));
