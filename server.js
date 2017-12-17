@@ -21,7 +21,7 @@ app.use(forceSSL());
 app.use(express.static(__dirname + '/dist'));
 
 // For all GET requests, send back index.html so that PathLocationStrategy can be used
-app.get('/home', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
