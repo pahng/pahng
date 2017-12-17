@@ -29,4 +29,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 ## Heroku Postgresql Database CLI Connection
-'heroku pg:psql $DATABASE_URL'
+`heroku pg:psql $DATABASE_URL`
