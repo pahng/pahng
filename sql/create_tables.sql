@@ -5,7 +5,8 @@ CREATE TABLE users(
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     elo_score INTEGER,
-    creation_time TIMESTAMP
+    creation_time TIMESTAMP,
+    update_time TIMESTAMP
 );
 
 
@@ -17,7 +18,8 @@ CREATE TABLE teams(
     member_one INTEGER REFERENCES users(id),
     member_two INTEGER REFERENCES users(id),
     elo_score INTEGER,
-    creation_time TIMESTAMP
+    creation_time TIMESTAMP,
+    update_time TIMESTAMP
 );
 
 
