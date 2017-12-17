@@ -1,3 +1,4 @@
+const dao = require('./dao.js');
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -15,6 +16,9 @@ const forceSSL = function() {
   }
 }
 
+console.log("start");
+dao.getUsers();
+
 // Instruct the app to use the forceSSL middleware
 app.use(forceSSL());
 
@@ -26,6 +30,10 @@ app.use(express.static(__dirname + '/dist'));
 // so that PathLocationStrategy can be used
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
+app.get('/users', function(req, res) {
+  res.json(dao.getUsers());
 });
 
 // Start the app by listening on the default Heroku port

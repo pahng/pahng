@@ -1,6 +1,6 @@
 /* USERS */
 CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     display_name VARCHAR(50),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
@@ -11,7 +11,7 @@ CREATE TABLE users(
 
 /* TEAMS */ 
 CREATE TABLE teams(
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     display_name VARCHAR(50),
     team_slogan VARCHAR(50),
     member_one INTEGER REFERENCES users(id),
@@ -23,7 +23,7 @@ CREATE TABLE teams(
 
 /* SINGLES GAMES */
 CREATE TABLE singles_games(
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     winning_player INTEGER REFERENCES users(id),
     losing_player INTEGER REFERENCES users(id),
     winning_score INTEGER,
@@ -34,7 +34,7 @@ CREATE TABLE singles_games(
 
 /*  DOUBLES GAMES */
 CREATE TABLE doubles_games(
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     winning_team INTEGER REFERENCES teams(id),
     losing_team INTEGER REFERENCES teams(id),
     winning_score INTEGER,
