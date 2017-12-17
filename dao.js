@@ -13,7 +13,7 @@ module.exports = {
     getUsers: function(req, res) {    
         var query = client.query("SELECT * FROM users", function(err, results, fields) {
             if (err) throw err;
-            console.log(results.rows);
+            res.send(results.rows);
         });
     }
 }
