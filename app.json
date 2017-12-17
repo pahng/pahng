@@ -1,0 +1,19 @@
+{
+  "name": "pahng",
+  "scripts": {
+  },
+  "env": {
+    "NODE_ENV": "dev",
+    "NPM_CONFIG_PRODUCTION": "false"
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
