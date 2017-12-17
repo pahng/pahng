@@ -26,7 +26,7 @@ app.get('/home', function(req, res) {
 });
 
 app.get('/api/users', function(req, res) {
-  dao.getUsers();
+  dao.getUsers(req, res);
 });
 
 // Start the app by listening on the default Heroku port
