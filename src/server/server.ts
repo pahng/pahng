@@ -29,19 +29,19 @@ if (process.env.NODE_ENV === 'production') {
 app.use(express.static(path.join(__dirname + '/public')));
 
 // Return all USERS
-app.get('/api/users', dao.getUsers(req, res));
+app.get('/api/users', dao.getUsers);
 
 
 // Return all TEAMS
-app.get('/api/teams', dao.getTeams(req, res));
+app.get('/api/teams', dao.getTeams);
 
 
 // Return all SINGLES GAMES
-app.get('/api/singles_games', dao.getSinglesGames(req, res));
+app.get('/api/singles_games', dao.getSinglesGames);
 
 
 // Return all DOUBLES GAMES
-app.get('/api/doubles_games', dao.getDoublesGames(req, res));
+app.get('/api/doubles_games', dao.getDoublesGames);
 
 
 // For all GET requests, send back index.html so that PathLocationStrategy can be used
