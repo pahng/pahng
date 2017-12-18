@@ -14,23 +14,39 @@ export class Dao {
         await this.client.connect();
     }
 
-    public async getUsers(req, res) {
-        const { rows } = await this.client.query('SELECT * FROM users');
-        res.send(rows);
+    public getUsers(req, res) {
+        this.client.query('SELECT * FROM users', (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.send(results.rows);
+        });
     }
 
-    public async getTeams(req, res) {
-        const { rows } = await this.client.query('SELECT * FROM teams');
-        res.send(rows);
+    public getTeams(req, res) {
+        this.client.query('SELECT * FROM teams', (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.send(results.rows);
+        });
     }
 
-    public async getSinglesGames(req, res) {
-        const { rows } = await this.client.query('SELECT * FROM singles_games');
-        res.send(rows);
+    public getSinglesGames(req, res) {
+        this.client.query('SELECT * FROM singles_games', (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.send(results.rows);
+        });
     }
 
-    public async getDoublesGames(req, res) {
-        const { rows } = await this.client.query('SELECT * FROM doubles_games');
-        res.send(rows);
+    public getDoublesGames(req, res) {
+        this.client.query('SELECT * FROM doubles_games', (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.send(results.rows);
+        });
     }
 }
