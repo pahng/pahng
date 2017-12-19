@@ -10,7 +10,7 @@
     "build:server": "tsc -p tsconfig.server.json",
     "watch:server": "tsc -w -p tsconfig.server.json",
     "watch:angular": "ng serve --proxy-config proxy.config.json",
-    "watch": "npm run build:server && concurrently -k -p \"[{name}]\" -n \"Angular,TypeScript,Node\" -c \"cyan.bold,green.bold,red.bold\" \"npm run watch:angular\" \"npm run watch:server\" \"node dist/server.js -w dist\"",
+    "watch": "npm run build:server && concurrently -k -p \"[{name}]\" -n \"Angular,TypeScript,Node\" -c \"cyan.bold,green.bold,red.bold\" \"npm run watch:angular\" \"npm run watch:server\" \"nodemon dist/server.js\"",
     "serve": "node dist/server.js",
     "test": "ng test",
     "lint": "ng lint",
@@ -59,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "nodemon": "^1.13.3",
     "protractor": "~5.1.2"
   }
 }

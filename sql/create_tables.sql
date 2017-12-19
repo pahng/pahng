@@ -10,7 +10,7 @@ CREATE TABLE users(
 );
 
 
-/* TEAMS */ 
+/* TEAMS */
 CREATE TABLE teams(
     id BIGSERIAL PRIMARY KEY,
     display_name VARCHAR(50),

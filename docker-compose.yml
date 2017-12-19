@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres:latest
+        container_name: pahng-db
+        environment:
+            POSTGRES_PASSWORD: mysecretpassword
+        volumes:
+            - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/1-schema.sql
+            - ./sql/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+        ports:
+            - 5432:5432
