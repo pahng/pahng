@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  public title = 'Pang Pahng | Dashboard';
+  public title = 'Pahng Dashboard';
 
   constructor() { }
 
