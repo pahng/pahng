@@ -1,13 +1,15 @@
 import { Client } from 'pg';
 
+export interface DaoConfig {
+    connectionString: string;
+    ssl: boolean;
+}
+
 export class Dao {
     private client: Client;
 
-    constructor() {
-        this.client = new Client({
-            connectionString: process.env.DATABASE_URL,
-            ssl: true
-        });
+    constructor(private config: DaoConfig) {
+        this.client = new Client(config);
     }
 
     public async connect() {
