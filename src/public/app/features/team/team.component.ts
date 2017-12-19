@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
+  public title = 'Team Page';
+  
   constructor() { }
 
   ngOnInit() {
