@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
@@ -9,7 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
   ],
   declarations: [
     DropdownComponent,
