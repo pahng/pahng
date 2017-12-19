@@ -2,8 +2,12 @@ import * as express from 'express';
 import * as path from 'path';
 import { Dao } from './dao';
 
+const daoConfig = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: false,
+};
+
 const app = express();
-const dao = new Dao();
 
 // If an incoming request uses a protocol other than HTTPS,
 // redirect that request to the same url but with HTTPS
@@ -19,11 +23,15 @@ const forceSSL = () => {
 // Instruct the app to use the forceSSL middleware
 if (process.env.NODE_ENV === 'production') {
     app.use(forceSSL());
-    dao.connect().catch(error => {
-        console.log(error);
-        process.exit(1);
-    });
+    daoConfig.ssl = true;
 }
+
+const dao = new Dao(daoConfig);
+
+dao.connect().catch(error => {
+    console.log(error);
+    process.exit(1);
+});
 
 // Run the app by serving the static files in the dist directory
 app.use(express.static(path.join(__dirname + '/public')));
