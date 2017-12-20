@@ -1,6 +1,11 @@
 import * as express from 'express';
 import * as path from 'path';
-import { Dao } from './dao';
+import { UsersDao } from './dao/usersDao';
+import { TeamsDao } from './dao/teamsDao';
+import { SinglesGamesDao } from './dao/singlesGamesDao';
+import { DoublesGamesDao } from './dao/doublesGamesDao';
+var bodyParser = require('body-parser')
+
 
 const daoConfig = {
     connectionString: process.env.DATABASE_URL,
@@ -8,6 +13,7 @@ const daoConfig = {
 };
 
 const app = express();
+
 
 // If an incoming request uses a protocol other than HTTPS,
 // redirect that request to the same url but with HTTPS
@@ -20,43 +26,67 @@ const forceSSL = () => {
     };
 };
 
+
 // Instruct the app to use the forceSSL middleware
 if (process.env.NODE_ENV === 'production') {
     app.use(forceSSL());
     daoConfig.ssl = true;
 }
 
-const dao = new Dao(daoConfig);
 
-dao.connect().catch(error => {
-    console.log(error);
-    process.exit(1);
-});
+// Entity DAOs
+const usersDao = new UsersDao(daoConfig);
+const teamsDao = new TeamsDao(daoConfig);
+const singlesGamesDao = new SinglesGamesDao(daoConfig);
+const doublesGamesDao = new DoublesGamesDao(daoConfig);
+
 
 // Run the app by serving the static files in the dist directory
 app.use(express.static(path.join(__dirname + '/public')));
 
+
+// Parse JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })) // parse application/x-www-form-urlencoded
+app.use(bodyParser.json())
+
+
 // Return all USERS
 app.get('/api/users', (req, res) => {
-    dao.getUsers(req, res);
+    usersDao.getUsers(req, res);
 });
 
 
 // Return all TEAMS
 app.get('/api/teams', (req, res) => {
-    dao.getTeams(req, res);
+    teamsDao.getTeams(req, res);
 });
 
 
 // Return all SINGLES GAMES
 app.get('/api/singles_games', (req, res) => {
-    dao.getSinglesGames(req, res);
+    singlesGamesDao.getSinglesGames(req, res);
 });
 
 
 // Return all DOUBLES GAMES
 app.get('/api/doubles_games', (req, res) => {
-    dao.getDoublesGames(req, res);
+    doublesGamesDao.getDoublesGames(req, res);
+});
+
+
+// Create new USER
+app.post('/api/create_user', (req, res) => {
+    let display_name = req.body.display_name;
+    let first_name = req.body.first_name;
+    let last_name = req.body.last_name;
+    let password = req.body.password;
+
+    if (display_name.length < 1 || first_name.length < 1 || last_name.length < 1 || password.length < 1) {
+        res.send({'error': 'input field lengths must all be greater than 1 (for now)'})
+    }
+    else {
+        usersDao.createUser(display_name, first_name, last_name, password, res);
+    }
 });
 
 
