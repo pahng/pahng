@@ -76,17 +76,7 @@ app.get('/api/doubles_games', (req, res) => {
 
 // Create new USER
 app.post('/api/create_user', (req, res) => {
-    let display_name = req.body.display_name;
-    let first_name = req.body.first_name;
-    let last_name = req.body.last_name;
-    let password = req.body.password;
-
-    if (display_name.length < 1 || first_name.length < 1 || last_name.length < 1 || password.length < 1) {
-        res.send({'error': 'input field lengths must all be greater than 1 (for now)'})
-    }
-    else {
-        usersDao.createUser(display_name, first_name, last_name, password, res);
-    }
+    usersDao.createUser(req, res);
 });
 
 
