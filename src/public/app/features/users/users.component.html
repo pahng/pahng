@@ -5,7 +5,16 @@
 
     <br><br>
 
-    <h2>
-        Users //TODO - search feature
-    </h2>
+    <div>
+        <h2>
+            Create User
+        </h2>
+        <form action="/api/create_user" method="post">
+            <input name="display_name" type="text" placeholder ="Display name">
+            <input name="first_name" type="text" placeholder ="First name"><br>
+            <input name="last_name" type="text" placeholder ="Last name">
+            <input name="password" type="password" placeholder ="Password"><br>
+            <button type="submit">Create User</button>
+        </form>
+    </div>
 </div>
