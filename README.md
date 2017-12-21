@@ -37,3 +37,7 @@ In order to run this container you will need to have [Docker](https://www.docker
 Once that is installed you can run these commands from the root directory of the project:
 - `docker-compose up -d` - Starts the Docker container. (The `-d` flag is to put it in detached mode so that it does not output into your terminal)
 - `docker-compose down` - Stops the Docker container.
+
+## Set Environment Variable
+You will also need to set the DATABASE_URL environment variable.
+`export DATABASE_URL=postgresql://postgres:mysecretpassword@localhost:5432/postgres`
