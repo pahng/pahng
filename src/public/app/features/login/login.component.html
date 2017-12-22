@@ -1,5 +1,5 @@
 <div class="ui dimmer active">
-    <div class="ui modal">
+    <div class="ui modal small">
         <div class="header">
             Login
         </div>
@@ -13,8 +13,10 @@
                     <label>Password</label>
                     <input formControlName="password" type="password" name="password" placeholder="Password">
                 </div>
-                <button class="ui button" type="submit">Submit</button>
-                <button routerLink="/register" class="ui button" type="button">Register</button>
+                <div class="ui two column grid">
+                    <div class="column"><button class="ui button fluid positive" type="submit">Submit</button></div>
+                    <div class="column"><button routerLink="/register" class="ui button fluid primary" type="button">Register</button></div>
+                </div>
             </form>
         </div>
     </div>
