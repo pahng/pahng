@@ -4,10 +4,12 @@
         <h1 align="center">Create New Team</h1>
     </div>
 
-    <br><br>
-
-    <form>
-        <input type="checkbox" name="doubles" id="doubles">
-        <label for="doubles">Doubles</label>
+    <form action="/api/create_team" method="post">
+        <input name="team_name" type="text" placeholder ="Team Name">
+        <input name="team_slogan" type="text" placeholder ="Team Slogan"><br>
+        <input name="member_one" type="text" placeholder ="Player One">
+        <input name="member_two" type="password" placeholder ="Player Two"><br>
+        <button type="submit">Create Team</button>
     </form>
+
 </div>

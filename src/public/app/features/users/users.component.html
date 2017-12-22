@@ -1,13 +1,28 @@
 <div align="center">
-    <h1>
-        My Profile
-    </h1>
-
-    <br><br>
-
-    <div>
-        <h2>
-            Create User
-        </h2>
+    <div class="ui two column centered grid">
+        <div class="column">
+            <h2>
+                Create User
+            </h2>
+            <form action="/api/create_user" method="post" class="ui form">
+                <div class="field">
+                    <label>Display Name</label>
+                    <input name="display_name" type="text" placeholder ="Display name">
+                </div>
+                <div class="field">
+                    <label>First Name</label>
+                    <input name="first_name" type="text" placeholder ="First name">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input name="last_name" type="text" placeholder ="Last name">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input name="password" type="password" placeholder ="Password">
+                </div>
+                <button class="fluid ui button primary" type="submit">Create User</button>
+            </form>
+        </div>
     </div>
 </div>
