@@ -1,7 +1,7 @@
 <div class="ui dimmer active">
-    <div class="ui modal">
+    <div class="ui modal small">
         <div class="header">
-            Register as a new player
+            Register as a New Player
         </div>
         <div class="content">
             <form [formGroup]="form" (ngSubmit)="submit()" class="ui form">
@@ -21,8 +21,14 @@
                     <label>Password</label>
                     <input formControlName="password" type="password" name="password" placeholder="Password">
                 </div>
-                <button class="ui button" type="submit" [disabled]="!form.valid">Submit</button>
-                <button routerLink="/login" class="ui button" type="button">Cancel</button>
+                <div class="ui two column grid">
+                    <div class="column">
+                        <button class="ui button positive fluid" type="submit" [disabled]="!form.valid">Submit</button>
+                    </div>
+                    <div class="column">
+                        <button routerLink="/login" class="ui button fluid" type="button">Cancel</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
