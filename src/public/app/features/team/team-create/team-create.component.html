@@ -4,12 +4,25 @@
         <h1 align="center">Create New Team</h1>
     </div>
 
-    <form action="/api/create_team" method="post">
-        <input name="team_name" type="text" placeholder ="Team Name">
-        <input name="team_slogan" type="text" placeholder ="Team Slogan"><br>
-        <input name="member_one" type="text" placeholder ="Player One">
-        <input name="member_two" type="password" placeholder ="Player Two"><br>
-        <button type="submit">Create Team</button>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="ui form">
+        <div class="field">
+            <label>Team Name</label>
+            <input formControlName="team_name" type="text" name="team_name" placeholder="Team Name">
+        </div>
+        <div class="field">
+            <label>Team Slogan</label>
+            <input formControlName="team_slogan" type="text" name="team_slogan" placeholder="Team Slogan">
+        </div>
+        <div class="field">
+            <label>Member One</label>
+            <input formControlName="member_one" type="text" name="last_name" placeholder="Member One">
+        </div>
+        <div class="field">
+            <label>Member Two</label>
+            <input formControlName="member_two" type="text" name="member_two" placeholder="Member Two">
+        </div>
+        <button class="ui button" type="submit" [disabled]="!form.valid">Submit</button>
+        <button routerLink="/login" class="ui button" type="button">Cancel</button>
     </form>
 
 </div>
