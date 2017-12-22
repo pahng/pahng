@@ -79,6 +79,11 @@ app.post('/api/create_user', (req, res) => {
     usersDao.createUser(req, res);
 });
 
+// Create new TEAM
+app.post('/api/create_team', (req, res) => {
+    teamsDao.createTeam(req, res);
+});
+
 
 // For all GET requests, send back index.html so that PathLocationStrategy can be used
 app.get('*', (req, res) => {
