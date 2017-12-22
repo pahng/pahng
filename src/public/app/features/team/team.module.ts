@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 import { TeamCreateComponent } from './team-create/team-create.component';
-import { TeamCreateService } from './team-create/team-create.service';
+import { TeamService } from './team.service';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -19,7 +19,7 @@ import { SharedModule } from '../../shared/shared.module';
     TeamCreateComponent
   ],
   providers: [
-    TeamCreateService,
+    TeamService,
   ]
 })
 export class TeamModule { }

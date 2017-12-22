@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { LoggerService } from '../../../core/logger.service';
-import { TeamCreateService } from './team-create.service';
+import { TeamService } from '../team.service';
 
 export interface Team {
   team_name: string;
@@ -34,7 +34,7 @@ export class TeamCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private logger: LoggerService,
-    private teamCreateService: TeamCreateService,
+    private teamService: TeamService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
@@ -55,7 +55,7 @@ export class TeamCreateComponent implements OnInit {
         this.team.team_slogan = this.form.value.team_slogan;
         this.team.member_one = this.form.value.member_one;
         this.team.member_two = this.form.value.member_two;
-        this.teamCreateService.save(this.team)
+        this.teamService.saveTeam(this.team)
         .subscribe(() => this.router.navigate(['/']));
     } 
 }
