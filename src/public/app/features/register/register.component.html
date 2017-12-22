@@ -1,0 +1,29 @@
+<div class="ui dimmer active">
+    <div class="ui modal">
+        <div class="header">
+            Register as a new player
+        </div>
+        <div class="content">
+            <form [formGroup]="form" (ngSubmit)="submit()" class="ui form">
+                <div class="field">
+                    <label>Display Name</label>
+                    <input formControlName="display_name" type="text" name="display_name" placeholder="Display Name">
+                </div>
+                <div class="field">
+                    <label>First Name</label>
+                    <input formControlName="first_name" type="text" name="first_name" placeholder="First Name">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input formControlName="last_name" type="text" name="last_name" placeholder="Last Name">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" name="password" placeholder="Password">
+                </div>
+                <button class="ui button" type="submit" [disabled]="!form.valid">Submit</button>
+                <button routerLink="/login" class="ui button" type="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

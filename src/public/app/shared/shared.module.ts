@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { DropdownComponent } from './dropdown/dropdown.component';
@@ -9,21 +10,25 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-  ],
-  declarations: [
-    DropdownComponent,
-    MainLayoutComponent,
-    NavbarComponent,
-    SideMenuComponent,
-  ],
-  exports: [
-    DropdownComponent,
-    MainLayoutComponent,
-    NavbarComponent,
-    SideMenuComponent,
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+    ],
+    declarations: [
+        DropdownComponent,
+        MainLayoutComponent,
+        NavbarComponent,
+        SideMenuComponent,
+    ],
+    exports: [
+        DropdownComponent,
+        MainLayoutComponent,
+        NavbarComponent,
+        SideMenuComponent,
+        FormsModule,
+        ReactiveFormsModule,
+    ]
 })
 export class SharedModule { }

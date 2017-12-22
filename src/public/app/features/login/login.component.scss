@@ -1,0 +1,12 @@
+.ui.active.dimmer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui.modal {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: unset;
+}

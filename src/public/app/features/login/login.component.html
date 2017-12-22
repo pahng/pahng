@@ -1,0 +1,21 @@
+<div class="ui dimmer active">
+    <div class="ui modal">
+        <div class="header">
+            Login
+        </div>
+        <div class="content">
+            <form [formGroup]="form" (ngSubmit)="submit()" class="ui form">
+                <div class="field">
+                    <label>Username</label>
+                    <input formControlName="username" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input formControlName="password" type="password" name="password" placeholder="Password">
+                </div>
+                <button class="ui button" type="submit">Submit</button>
+                <button routerLink="/register" class="ui button" type="button">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

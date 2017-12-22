@@ -1,0 +1,15 @@
+.ui.active.dimmer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.ui.modal {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: unset;
+    transform: rotateY(0);
+}
