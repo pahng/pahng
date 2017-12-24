@@ -20,9 +20,6 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md)
 
-## Heroku Postgresql Database CLI Connection
-`heroku pg:psql $DATABASE_URL`
-
 ## Local Postgresql Server
 The project also include a docker-compose file which will start a Docker container running Postgresql
 which will be pre-loaded with the tables necessary to run the app and has initial data loaded.
@@ -41,3 +38,6 @@ Once that is installed you can run these commands from the root directory of the
 ## Set Environment Variable
 You will also need to set the DATABASE_URL environment variable.
 `export DATABASE_URL=postgresql://postgres:mysecretpassword@localhost:5432/postgres`
+
+## Heroku Postgresql Database CLI Connection
+`heroku pg:psql $DATABASE_URL`
