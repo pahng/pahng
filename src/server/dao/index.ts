@@ -31,9 +31,7 @@ function setupTeams(app: Express, pool: Pool) {
     app.use(`${BASE_URL}/teams`, teamsDao.router);
 
     // Set up deprecated route
-    app.post(`${BASE_URL}/create_team`, (request: Request, response: Response) => {
-        response.redirect(`${BASE_URL}/users`);
-    });
+    app.post(`${BASE_URL}/create_team`, teamsDao.post);
 }
 
 function setupUsers(app: Express, pool: Pool) {
@@ -41,9 +39,7 @@ function setupUsers(app: Express, pool: Pool) {
     app.use(`${BASE_URL}/users`, usersDao.router);
 
     // Set up deprecated route
-    app.post(`${BASE_URL}/create_user`, (request: Request, response: Response) => {
-        response.redirect(`${BASE_URL}/users`);
-    });
+    app.post(`${BASE_URL}/create_user`, usersDao.post);
 }
 
 function setupDefault(app: Express) {
