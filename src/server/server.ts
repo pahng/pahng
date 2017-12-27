@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());
 
+// Setup all routes
 setupRoutes(app, pool);
 
 // Start the app by listening on the default Heroku port
