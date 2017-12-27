@@ -29,11 +29,21 @@ function setupDoublesGames(app: Express, pool: Pool) {
 function setupTeams(app: Express, pool: Pool) {
     const teamsDao = new TeamsDao(pool);
     app.use(`${BASE_URL}/teams`, teamsDao.router);
+
+    // Set up deprecated route
+    app.post(`${BASE_URL}/create_team`, (request: Request, response: Response) => {
+        response.redirect(`${BASE_URL}/users`);
+    });
 }
 
 function setupUsers(app: Express, pool: Pool) {
     const usersDao = new UsersDao(pool);
     app.use(`${BASE_URL}/users`, usersDao.router);
+
+    // Set up deprecated route
+    app.post(`${BASE_URL}/create_user`, (request: Request, response: Response) => {
+        response.redirect(`${BASE_URL}/users`);
+    });
 }
 
 function setupDefault(app: Express) {

@@ -66,16 +66,4 @@ export class TeamsDao extends BaseDao {
             response.send({ error: 'Not implemented yet.' });
         };
     }
-
-    /**
-     * Sets up the nested routes in this DAO and assigns them to the Router.
-     *
-     * @protected
-     * @return {void}
-     */
-    protected setupRoutes(): void {
-        super.setupRoutes();
-        // Deprecated, kept for backwards compatibility
-        this.router.route('/create_team').post(this.post);
-    }
 }
