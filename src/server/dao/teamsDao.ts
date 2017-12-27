@@ -1,48 +1,44 @@
+import { Response, Request, NextFunction, Router } from 'express';
 import { Client } from 'pg';
+import { BaseDao } from './base-dao';
 
-export interface DaoConfig {
-    connectionString: string;
-    ssl: boolean;
-}
+export class TeamsDao extends BaseDao {
 
-export class TeamsDao {
-    private client: Client;
-
-    constructor(private config: DaoConfig) {
-        this.client = new Client(config);
-        this.connect().catch(error => {
-            console.log(error);
-        });
+    protected get defaultTableName() {
+        return 'teams';
     }
 
-    public async connect() {
-        await this.client.connect();
-    }
+    public get post() {
+        return async (request: Request, response: Response, next: NextFunction) => {
+            const { team_name, team_slogan, member_one, member_two } = request.body;
+            const query = `INSERT INTO teams (display_name, team_slogan, member_one, member_two, elo_score, creation_time, update_time)
+            VALUES ('${team_name}', '${team_slogan}', ${member_one}, ${member_two}, 1500, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`;
 
-    public getTeams(req, res) {
-        this.client.query('SELECT * FROM teams', (err, results) => {
-            if (err) {
-                throw err;
+            if (team_name.length < 1 || team_slogan.length < 1 || member_one.length < 1 || member_two.length < 1) {
+                response.send({ error: 'input field lengths must all be greater than 1 (for now)'});
             }
-            res.send(results.rows);
-        });
+
+            return this.pool.query(query)
+                .then(() => response.send({ result: 'success', message: `Team with display name ${team_name} was created` }))
+                .catch(error => response.send({ error }));
+        };
     }
 
-    public createTeam(req, res) {
-        let team_name = req.body.team_name;
-        let team_slogan = req.body.team_slogan;
-        let member_one = req.body.member_one;
-        let member_two = req.body.member_two;
+    public get put() {
+        return async (request: Request, response: Response, next: NextFunction) => {
+            response.send({ error: 'Not implemented yet.' });
+        };
+    }
 
-        if (team_name.length < 1 || team_slogan.length < 1 || member_one.length < 1 || member_two.length < 1) {
-            res.send({'error': 'input field lengths must all be greater than 1 (for now)'})
-        }
+    public get delete() {
+        return async (request: Request, response: Response, next: NextFunction) => {
+            response.send({ error: 'Not implemented yet.' });
+        };
+    }
 
-        this.client.query("INSERT INTO teams (display_name, team_slogan, member_one, member_two, elo_score, creation_time, update_time) VALUES ('" + team_name + "','" + team_slogan + "','" + member_one + "','" + member_two + "', 1500, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)", (err, results) => {
-            if (err) {
-                res.send({'error': err});
-            }
-            res.send({'result': 'success', 'message': 'teams with display name "' + team_name + '" was created'});
-        });
+    protected setupRoutes(): void {
+        super.setupRoutes();
+        // Deprecated, kept for backwards compatibility
+        this.router.route('/create_team').post(this.post);
     }
 }
