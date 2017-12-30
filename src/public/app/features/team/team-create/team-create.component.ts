@@ -26,7 +26,7 @@ export class TeamCreateComponent implements OnInit {
     team_slogan: '',
     member_one: '',
     member_two: '',
-};
+  };
 
   public title = 'Create Team';
 
@@ -42,7 +42,7 @@ export class TeamCreateComponent implements OnInit {
       team_slogan: ['', Validators.required],
       member_one: ['', Validators.required],
       member_two: ['', Validators.required],
-  });
+    });
   }
 
   ngOnInit() {
@@ -57,6 +57,6 @@ export class TeamCreateComponent implements OnInit {
         this.teamService.saveTeam(this.team)
         .subscribe(() => this.router.navigate(['/']));
     } 
-}
+  }
 
 }
