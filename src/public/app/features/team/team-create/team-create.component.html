@@ -15,14 +15,23 @@
         </div>
         <div class="field">
             <label>Member One</label>
-            <input formControlName="member_one" type="text" name="last_name" placeholder="Member One">
+            <select formControlName="member_one" name="last_name" class="ui fluid dropdown">
+                <option value="">Member One</option>
+                <option *ngFor="let user of users | async" [value]="user.id">{{user.display_name}}</option>
+            </select>
+            <!--<input formControlName="member_one" type="text" name="last_name" placeholder="Member One">-->
         </div>
         <div class="field">
             <label>Member Two</label>
-            <input formControlName="member_two" type="text" name="member_two" placeholder="Member Two">
+            <select formControlName="member_two" name="member_two" class="ui fluid dropdown">
+                <option value="">Member Two</option>
+                <option *ngFor="let user of users | async" [value]="user.id">{{user.display_name}}</option>
+            </select>
+            <!--<input formControlName="member_two" type="text" name="member_two" placeholder="Member Two">-->
         </div>
         <button class="ui button primary" type="submit" [disabled]="!form.valid">Submit</button>
         <button routerLink="/login" class="ui button" type="button">Cancel</button>
     </form>
+    <pre>{{ form.value | json }}</pre>
 
 </div>
