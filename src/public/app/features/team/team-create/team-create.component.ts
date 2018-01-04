@@ -44,6 +44,8 @@ export class TeamCreateComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
     ) {
+        // We want to call share() here so that this observable gets shared between
+        // both select boxes. Otherwise the userService will be called twice.
         this.users = this.userService.getUsers().pipe(
             share()
         );
