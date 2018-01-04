@@ -19,7 +19,6 @@
                 <option value="">Member One</option>
                 <option *ngFor="let user of users | async" [value]="user.id">{{user.display_name}}</option>
             </select>
-            <!--<input formControlName="member_one" type="text" name="last_name" placeholder="Member One">-->
         </div>
         <div class="field">
             <label>Member Two</label>
@@ -27,7 +26,6 @@
                 <option value="">Member Two</option>
                 <option *ngFor="let user of users | async" [value]="user.id">{{user.display_name}}</option>
             </select>
-            <!--<input formControlName="member_two" type="text" name="member_two" placeholder="Member Two">-->
         </div>
         <button class="ui button primary" type="submit" [disabled]="!form.valid">Submit</button>
         <button routerLink="/login" class="ui button" type="button">Cancel</button>
