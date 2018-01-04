@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { User } from '../shared/models/user';
 
 
 const STORAGE_KEY = 'auth_storage_key';
@@ -41,7 +42,7 @@ export class AuthService {
         this.router.navigate(['/login']);
     }
 
-    public handleAuthentication(user: { display_name: string, password: string }): Observable<boolean> {
+    public handleAuthentication(user: User): Observable<boolean> {
         const display_name = user.display_name || 'tempUser';
         console.log(user);
         localStorage.setItem(STORAGE_KEY, display_name);

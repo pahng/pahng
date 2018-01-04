@@ -1,0 +1,20 @@
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>Team Name</th>
+            <th>Team Slogan</th>
+            <th>ELO Score</th>
+            <th>Member Two</th>
+            <th>Member Two</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let team of teams | async">
+            <td>{{team.display_name}}</td>
+            <td>{{team.team_slogan}}</td>
+            <td>{{team.elo_score}}</td>
+            <td>{{getUserById(team.member_one).display_name}}</td>
+            <td>{{getUserById(team.member_two).display_name}}</td>
+        </tr>
+    </tbody>
+</table>

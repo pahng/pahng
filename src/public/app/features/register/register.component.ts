@@ -4,15 +4,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { LoggerService } from '../../core/logger.service';
-import { RegisterService } from './register.service';
 import { AuthService } from '../../auth/auth.service';
-
-export interface User {
-    display_name: string;
-    first_name: string;
-    last_name: string;
-    password: string;
-}
+import { User } from '../../shared/models/user';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
     selector: 'png-register',
@@ -38,7 +32,7 @@ export class RegisterComponent implements OnInit, OnChanges {
     constructor(
         private formBuilder: FormBuilder,
         private logger: LoggerService,
-        private registerService: RegisterService,
+        private userService: UserService,
         private authService: AuthService,
         private route: ActivatedRoute,
         private router: Router
@@ -69,7 +63,7 @@ export class RegisterComponent implements OnInit, OnChanges {
             this.user.first_name = this.form.value.first_name;
             this.user.last_name = this.form.value.last_name;
             this.user.password = this.form.value.password;
-            this.registerService.save(this.user).pipe(
+            this.userService.save(this.user).pipe(
                 switchMap(user => this.authService.handleAuthentication(user))
             ).subscribe(() => this.router.navigate(['/']));
         } else {

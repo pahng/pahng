@@ -4,9 +4,8 @@ import { CommonModule } from '@angular/common';
 import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 import { TeamCreateComponent } from './team-create/team-create.component';
-import { TeamService } from './team.service';
-
 import { SharedModule } from '../../shared/shared.module';
+import { TeamsListComponent } from './teams-list/teams-list.component';
 
 @NgModule({
   imports: [
@@ -15,11 +14,9 @@ import { SharedModule } from '../../shared/shared.module';
     TeamRoutingModule
   ],
   declarations: [
-    TeamComponent, 
-    TeamCreateComponent
+    TeamComponent,
+    TeamCreateComponent,
+    TeamsListComponent
   ],
-  providers: [
-    TeamService,
-  ]
 })
 export class TeamModule { }
