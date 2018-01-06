@@ -7,6 +7,8 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserService } from './services/user.service';
+import { TeamService } from './services/team.service';
 
 
 @NgModule({
@@ -29,6 +31,10 @@ import { NavbarComponent } from './navbar/navbar.component';
         SideMenuComponent,
         FormsModule,
         ReactiveFormsModule,
+    ],
+    providers: [
+        UserService,
+        TeamService,
     ]
 })
 export class SharedModule { }

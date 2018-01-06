@@ -4,11 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fadeInAnimation } from '../../shared/animations';
 import { LoggerService } from '../../core/logger.service';
 import { AuthService } from '../../auth/auth.service';
-
-interface User {
-    display_name: string;
-    password: string;
-}
+import { User } from '../../shared/models/user';
 
 @Component({
     selector: 'png-login',
