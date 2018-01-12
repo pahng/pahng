@@ -1,0 +1,25 @@
+{
+    "short_name": "Pahng",
+    "name": "Pahng: Settle the score",
+    "icons": [
+      {
+        "src": "assets/logo/launcher-icon-1x.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "assets/logo/launcher-icon-2x.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "assets/logo/launcher-icon-3x.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    "start_url": "",
+    "display": "standalone",
+    "background_color": "#9ca6b7",
+    "theme_color": "#9ca6b7"
+  }
